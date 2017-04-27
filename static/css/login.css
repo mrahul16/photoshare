@@ -1,0 +1,80 @@
+body {
+    font-size: 16px;
+}
+
+#page {
+    /*padding: 6em 0;*/
+}
+
+.title {
+    font-family: 'Righteous', cursive;
+    display: inline-block;
+    width: 50%;
+    padding: 0.8em 0;
+    margin: 0;
+    float: left;
+}
+
+#title1 {
+    color: #3F51B5;
+    text-align: right;
+}
+
+#title2 {
+    color: #FFF;
+    background-color: #3F51B5;
+    left: 50%;
+}
+
+#signup, #login {
+    height: 100%;
+    padding: 4em 6em;
+}
+
+#signup {
+    background-color: #3F51B5;
+}
+
+label {
+    font-weight: 500;
+}
+
+#signup label {
+    color: #FFF;
+}
+
+#login label {
+    color: #3F51B5;
+}
+
+#signup input {
+    background-color: #3F51B5;
+    border-bottom: 1px solid white;
+    color: #FFF;
+}
+
+#login input {
+    background-color: #FFF;
+    border-bottom: 1px solid #3F51B5;
+    
+}
+
+input.form-control {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transition: border-bottom .15s;
+
+}
+
+input.form-control:focus {
+    box-shadow: none;
+}
+
+#login input.form-control:focus {
+    border-bottom: 2px solid #3F51B5;
+}
+
+#signup input.form-control:focus {
+    border-bottom: 2px solid #FFF;
+}

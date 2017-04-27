@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}{{ session["firstname"] }}{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prof.css') }}">
+{% endblock %}
+{% block content %}
+<!-- uder info -->
+<div class="container">
+    <div id="bio" class="col-md-4">
+        <center>
+            <div class="row">
+                <!-- progile pic -->
+                <img src="{{url_for('static',filename='img/favicon.ico') }}" alt="profile picture" class="img-circle" width="50%">
+            </div>
+            <div class="row">
+                <p>{{ session["firstname"] }}{{ session["lastname"] }}</p>
+            </div>
+            <div class="row">
+                {{ count }} photos
+            </div>
+        </center>
+    </div>
+</div>
+
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Your uploads</h1>
+        </div>
+
+        {% for photo in photos %}
+
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+            <img class="img-responsive userpics" src="/uploads/{{ photo['file'] }}">
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // $(".userpics").height(this.width());
+    $.each($(".userpics"), function(i, o) {
+        console.log(o);
+        $(o).height($(o).width());
+    });
+</script>
+{% endblock %}

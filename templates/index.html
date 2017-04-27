@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Home | {{ session["firstname"] }} {{ session["lastname"] }} {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    {% for photo in photos %}
+        <div class="wrapper">
+            <h3 class="username left-space">{{ photo["username"] }}</h3>
+            <img class="userphoto" src="/uploads/{{ photo['file'] }}" alt="">
+            <div class="like-container left-space">
+                {% if photo["liked"] == 0 %}
+                    <img class="beforelike" src="{{ url_for('static', filename='img/beforelike.svg') }}" alt="" onclick="like('{{ photo['_id'] }}', '{{ session['_id'] }}', this)">
+                    <img class="afterlike hide" src="{{ url_for('static', filename='img/afterlike.svg') }}" alt="">
+                {% else %}
+                    <img class="afterlike" src="{{ url_for('static', filename='img/afterlike.svg') }}" alt="">
+                {% endif %}
+                <span class="like-count">{{ photo["likeCount"] }}</span>
+            </div>
+            <div class="photoname left-space right-space">{{ photo["name"] }}</div>
+            <div class="photodesc left-space right-space">{{ photo["description"] }}</div>
+            <div class="time">{{ photo["added"] }}</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

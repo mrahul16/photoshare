@@ -1,0 +1,10 @@
+#bio
+{
+    border-left: 6px solid #03A9F4;
+    background-color: #e0f2f1;
+}
+
+.userpics {
+    width: 100%;
+    object-fit: cover;
+}

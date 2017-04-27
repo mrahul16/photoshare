@@ -1,0 +1,78 @@
+body {
+    background-color: #e9ebee;
+}
+
+.container {
+    width: 50%;
+    padding-right: 1em;
+    padding-left: 1em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper {
+    background-color: #FFF;
+    padding-bottom: 0.6em;
+    margin-bottom: 0.5em;
+}
+
+.left-space {
+    padding-left: 1em;
+}
+
+.right-space {
+    padding-right: 1em;
+}
+
+.username {
+    border-bottom: 1px solid #EEE;
+    font-size: 1em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+
+.userphoto {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.like-container {
+    position: relative;
+    padding-top: 1em;
+    padding-bottom: 0.6em;
+    height: 49.6px;
+}
+
+.like-count {
+    display: inline-block;
+    position: absolute;
+    left: 44px;
+    padding: 0em 0;
+}
+
+.photoname {
+    font-weight: bold;
+    padding-bottom: 0.3em;
+}
+
+.photodesc {
+    font-weight: lighter;
+    padding-bottom: 0.4em;
+}
+
+.time {
+    color: #888;
+    font-size: 0.8em;
+    padding-left: 16px;
+}
+
+.afterlike.hide {
+    display: none;
+}
+
+.nothing {
+    /*display: inline-block;
+    height: 24px;
+    width: 1px;*/
+}

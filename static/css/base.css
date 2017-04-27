@@ -1,0 +1,126 @@
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 4em 0 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    outline: none;
+}
+
+h3 {
+    margin: 0;
+}
+
+.navbar-inverse {
+    border-radius: 0;
+    border: 0;
+    background-color: #3F51B5;
+}
+
+.navbar-inverse .navbar-brand {
+    font-family: 'Righteous', cursive;
+    color: #FFF;
+    font-size: 1.6em;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+    transition: background-color 0.35s;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
+    background-color: #1A237E;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #303F9F;
+}
+
+#new-photo {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border: 0;
+    height: 3.2em;
+    width: 3.2em;
+    background-color: #3F51B5;
+    background-image: url(/static/img/add.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: box-shadow .35s;
+}
+
+#new-photo:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#new-photo:active {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#add-friend {
+    position: fixed;
+    bottom: 6.6em;
+    right: 2em;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border: 0;
+    height: 3.2em;
+    width: 3.2em;
+    background-color: #E91E63;
+    background-image: url(/static/img/addfriend.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: box-shadow .35s;
+}
+
+#add-friend:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#add-friend:active {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+label {
+    font-weight: 500;
+    color: #3F51B5;
+}
+
+input.form-control, textarea.form-control {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #3F51B5;
+    box-shadow: none;
+    transition: border-bottom .15s;
+
+}
+
+input.form-control:focus, textarea.form-control:focus {
+    box-shadow: none;
+    border-bottom: 2px solid #3F51B5;
+}
+
+#preview {
+    width: 100%;
+    height: auto;
+}
+
+#new-photo-label, #add-friend-label {
+    font-family: 'Righteous', cursive;
+    color: #3F51B5;
+    font-size: 1.32em;
+}
+
+.req-name {
+    padding: 0.32em 0;
+}
+
+.accept-container {
+    text-align: right;
+}

@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block stylesheets %}{% endblock %}
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand nav-white" href="/">PhotoShare</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if fr != [] %}
+                    <li><a href="#" id="nav-request" data-toggle="modal" data-target="#request-modal"><img id="requests" src="/static/img/request.svg" alt=""></a></li>
+                {% endif %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ session["firstname"] }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/profile">Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/user/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <button id="new-photo" data-toggle="modal" data-target="#newphoto"></button>
+    <button id="add-friend" data-toggle="modal" data-target="#addfriend"></button>
+    {% block content %}{% endblock %}
+    <div class="modal fade" id="newphoto" tabindex="-1" role="dialog" aria-labelledby="new-photo-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="new-photo-label">Add New Photo</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="addphotoform" method="post" action="/user/addphoto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <textarea class="form-control" rows="1" id="description" name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Photo</label>
+                            <input type="file" class="form-control" id="file" name="file" required>
+                        </div>
+                        <img id="preview" src="#" alt="">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="upload" type="button" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addfriend" tabindex="-1" role="dialog" aria-labelledby="add-friend-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="add-friend-label">Add Friend</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="addfriendform" method="post" action="/user/addfriend" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="friend" type="button" class="btn btn-primary">Add Friend</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="request-modal" tabindex="-1" role="dialog" aria-labelledby="accept-request-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="accept-request-label">Friend Requests</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        {% for r in fr %}
+                            <li class="list-group-item">
+                                <div class="col-md-8 req-name">
+                                    {{ r["firstname"] }} {{ r["lastname"] }}
+                                </div>
+                                <div class="col-md-4 accept-container">
+                                    <button class="btn btn-primary accept" onclick="acceptrequest('{{ r['_id'] }}', '{{ session['_id'] }}', this)">Accept</button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery-3.2.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
