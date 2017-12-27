@@ -1,4 +1,4 @@
-# photoShare
+# photoshare
 
 This is a web application to share photos among friends developed as an assignment for Cloud Computing and Big Data bootcamp.
 
